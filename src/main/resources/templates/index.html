@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+>
+<head th:include="header.html">
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+    <div th:include="navbar.html"></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>NAME</td>
+                <td>SURNAME</td>
+                <td>EXAM</td>
+                <td>MARK</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}" th:class="${student.getExam() < 50 ? 'table-danger' : 'color:black'}">
+                <td th:text="${student.getId()}"></td>
+                <td th:text="${student.getName()}"></td>
+                <td th:text="${student.getSurname()}"></td>
+                <td th:text="${student.getExam()}"></td>
+                <td th:text="${student.getMark()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
